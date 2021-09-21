@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.3
--- Dumped by pg_dump version 13.3
+-- Dumped from database version 13.4
+-- Dumped by pg_dump version 13.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -21,20 +21,25 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: tasks; Type: TABLE; Schema: public; Owner: -
+-- Name: contacts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.tasks (
-    id integer NOT NULL,
-    name text
+CREATE TABLE public.contacts (
+    contact_id integer NOT NULL,
+    first_name character varying(255),
+    last_name character varying(255),
+    email character varying(500),
+    phone character varying(15),
+    notes text,
+    contact_created timestamp without time zone DEFAULT now()
 );
 
 
 --
--- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: contacts_contact_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.tasks_id_seq
+CREATE SEQUENCE public.contacts_contact_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -44,45 +49,43 @@ CREATE SEQUENCE public.tasks_id_seq
 
 
 --
--- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: contacts_contact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
-
-
---
--- Name: tasks id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_id_seq'::regclass);
+ALTER SEQUENCE public.contacts_contact_id_seq OWNED BY public.contacts.contact_id;
 
 
 --
--- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: -
+-- Name: contacts contact_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-COPY public.tasks (id, name) FROM stdin;
-1	🙏 Be nice when you add test entries
-2	⏲ Added entries will be reset every Sunday
-3	End white supremacy
-4	Advocate for living wage
-5	Provide universal health care
+ALTER TABLE ONLY public.contacts ALTER COLUMN contact_id SET DEFAULT nextval('public.contacts_contact_id_seq'::regclass);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.contacts (contact_id, first_name, last_name, email, phone, notes, contact_created) FROM stdin;
+1	Serena	Chen	s3r3n4@gmail.com	555-5555	Myself	2021-09-20 20:39:13.709717
+2	Lydia	Chen	lydia@gmail.com	555-5555	Cousin	2021-09-20 20:39:36.146812
+3	Eddie	Chen	eddie@gmail.com	555-5461	Brother	2021-09-20 21:23:13.254556
 \.
 
 
 --
--- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: contacts_contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tasks_id_seq', 5, true);
+SELECT pg_catalog.setval('public.contacts_contact_id_seq', 3, true);
 
 
 --
--- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tasks
-    ADD CONSTRAINT tasks_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.contacts
+    ADD CONSTRAINT contacts_pkey PRIMARY KEY (contact_id);
 
 
 --
