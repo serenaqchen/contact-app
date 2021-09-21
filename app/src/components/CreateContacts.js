@@ -1,7 +1,7 @@
 import React from "react";
 
 //Renders a form for the user to add a new contact
-function CreateContacts({ addContact }) {
+function CreateContacts({ addContact, setNewContact }) {
   //creating initial state of the form
   const initialState = {
     first_name: "",
@@ -47,7 +47,7 @@ function CreateContacts({ addContact }) {
 
   return (
     <div>
-      <h1>Add Contact</h1>
+      <h2>Add Contact</h2>
       <form onSubmit={handleAddContact}>
         <label htmlFor="first_name">First Name: </label>
         <input
@@ -59,9 +59,10 @@ function CreateContacts({ addContact }) {
               payload: e.target.value,
             })
           }
+          required
         />
         <br />
-        <br />
+      
         <label htmlFor="last_name">Last Name: </label>
         <input
           id="last_name"
@@ -72,9 +73,25 @@ function CreateContacts({ addContact }) {
               payload: e.target.value,
             })
           }
+          required
         />
         <br />
+  
+        <label htmlFor="phone">Phone: </label>
+        <input
+          id="phone"
+          value={state.phone}
+          onChange={(e) =>
+            dispatch({
+              type: "editPhone",
+              payload: e.target.value,
+            })
+          }
+          required
+        />
+
         <br />
+ 
         <label htmlFor="email">Email: </label>
         <input
           id="email"
@@ -86,21 +103,9 @@ function CreateContacts({ addContact }) {
             })
           }
         />
+
         <br />
-        <br />
-        <label htmlFor="phone">Phone: </label>
-        <input
-          id="phone"
-          value={state.phone}
-          onChange={(e) =>
-            dispatch({
-              type: "editPhone",
-              payload: e.target.value,
-            })
-          }
-        />
-        <br />
-        <br />
+
         <label htmlFor="notes">Notes: </label>
         <input
           type="text"
@@ -113,9 +118,11 @@ function CreateContacts({ addContact }) {
             })
           }
         />
+
         <br />
         <br />
         <button>Add Contacts</button>
+        <button onClick={(e) => setNewContact(false)}>Cancel</button>
       </form>
     </div>
   );

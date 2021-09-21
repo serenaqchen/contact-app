@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+nav{
+  font-family: 'Share Tech Mono', monospace;
+}
+
+button{
+  font-family: 'Share Tech Mono', monospace;
+  color: black;
+  background-color: rgb(199, 155, 199);
+  border: transparent;
+  margin: 5px;
+  padding: 5px;
+}
+button:hover{
+  background-color: rgb(233, 171, 233);
+}
+h2{
+  text-align: center;
+}
+input{
+  border: white;
+  background-color: white;
+  height: 20px;
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 3px;
+}
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactButton{
+  background-color: transparent;
+  width: 250px;
+  border: 2px solid transparent;
+  padding: 5%;
+  color: black;
+  font-size: 20px;
+}
+
+.contactButton:hover{
+  background-color: rgb(206, 173, 206);
+  border: 2px solid rgb(206, 173, 206);
+}
+.centerHorizontally{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Contact-App {
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+h1 {
+  color: black;
+}
+
+#listOfContacts{
+  padding: 0 5% 5% 5%;
+}
+
+#phoneScreen{
+  background-color: thistle;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 10%;
+  padding: 2% 5% 5% 5%;
+  border-radius: 10px;
+}
+
+#displayMoreInfo{
+  background-color: rgb(235, 221, 235);
+  padding: 2% 5% 5% 5%;
+  border-radius: 5px;
+}

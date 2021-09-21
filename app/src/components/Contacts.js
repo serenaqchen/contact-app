@@ -16,8 +16,8 @@ function Contacts({ contacts, setViewDeatails, setMoreInfo }) {
   ));
 
   return (
-    <section>
-      <ul>{listOfContacts}</ul>
+    <section id="listOfContacts" className="center">
+      <p>{listOfContacts}</p>
     </section>
   );
 }
@@ -25,7 +25,7 @@ function Contacts({ contacts, setViewDeatails, setMoreInfo }) {
 function ContactsList({ contact, handleMoreInfo }) {
   return (
     <div>
-      <button onClick={(e) => handleMoreInfo(contact)}>
+      <button className="contactButton" onClick={(e) => handleMoreInfo(contact)}>
         {contact.first_name} {contact.last_name}
       </button>
       <br />

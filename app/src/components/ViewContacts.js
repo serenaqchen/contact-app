@@ -69,12 +69,12 @@ function ViewContacts({
     e.preventDefault();
     deleteContact(moreInfo.contact_id);
     dispatch({ type: "reset" });
-    setMoreInfo(state)
+    setMoreInfo(state);
     setEditable(false);
   };
 
   const updateForm = (
-    <div>
+    <div className="center">
       <h2>Edit Contact</h2>
       <form>
         <label htmlFor="updateFirst_name">First Name: </label>
@@ -101,6 +101,7 @@ function ViewContacts({
             })
           }
         ></input>
+        <br />
         <label htmlFor="updatePhone">Phone: </label>
         <input
           id="updatePhone"
@@ -112,7 +113,8 @@ function ViewContacts({
               payload: e.target.value,
             })
           }
-        ></input>
+        ></input>{" "}
+        <br />
         <label htmlFor="updateEmail">Email: </label>
         <input
           id="updateEmail"
@@ -124,7 +126,8 @@ function ViewContacts({
               payload: e.target.value,
             })
           }
-        ></input>
+        ></input>{" "}
+        <br />
         <label htmlFor="updateNotes">Notes: </label>
         <input
           type="text"
@@ -137,6 +140,8 @@ function ViewContacts({
             })
           }
         />
+        <br />
+        <br />
         <button onClick={handleUpdateContact}>Update</button>
         <button onClick={handleCancelUpdate}>Cancel</button>
       </form>
@@ -144,18 +149,22 @@ function ViewContacts({
   );
 
   const displayMoreInfo = (
-    <div>
+    <div id="displayMoreInfo">
       <h2>Contact Info</h2>
-      <p>
-        Name: {moreInfo.first_name} {moreInfo.last_name}
-      </p>
-      <p>Phone: {moreInfo.phone}</p>
-      <p>Email: {moreInfo.email}</p>
-      <p>Notes: {moreInfo.notes}</p>
+      <div className="center">
+        <p>
+          Name: {moreInfo.first_name} {moreInfo.last_name}
+        </p>
+        <p>Phone: {moreInfo.phone}</p>
+        <p>Email: {moreInfo.email}</p>
+        <p>Notes: {moreInfo.notes}</p>
+      </div>
       <br />
-      <button onClick={(e) => setEditable(true)}>Edit</button>
-      <button onClick={handleDeleteeContact}>Delete</button>
-      <button onClick={(e) => setViewDetails(false)}>Close</button>
+      <div className="centerHorizontally">
+        <button onClick={(e) => setEditable(true)}>Edit</button>
+        <button onClick={handleDeleteeContact}>Delete</button>
+        <button onClick={(e) => setViewDetails(false)}>Close</button>
+      </div>
     </div>
   );
   return <div>{editable ? updateForm : displayMoreInfo}</div>;
